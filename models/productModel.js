@@ -3,38 +3,77 @@ const mongoose = require("mongoose"); // Erase if already required
 // Declare the Schema of the Mongo model
 var productSchema = new mongoose.Schema(
   {
-    title: {
+    fname: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
-    slug: {
+    lname: {
       type: String,
-      required: true,
+      // required: true,
       unique: true,
       lowercase: true,
     },
-    description: {
+    birth: {
       type: String,
-      required: true,
+      // required: true,
     },
-    price: {
+    snumber: {
       type: Number,
-      required: true,
+      // required: true,
     },
-    category: {
+    phone: {
       type: String,
-      required: true,
+      // required: true,
     },
-    brand: {
+    streetnumber: {
       type: String,
-      required: true,
+      // required: true,
     },
-    quantity: {
-      type: Number,
-      required: true,
+    city: {
+      type: String,
+      // required: true,
     },
-    sold: {
+    zip: {
+      type: String,
+      // required: true,
+    },
+    country: {
+      type: String,
+      // required: true,
+    },
+    email: {
+      type: String,
+      // required: true,
+    },
+    clientusername:{
+      type : String,
+      
+    },
+    password: {
+      type: String,
+      // required: true,
+    },
+    cpassword:{
+      type:String,
+
+    },
+    notes:{
+      type:String
+    },
+    creditreport:{
+      type:String
+    },
+    manualcreditreport: {
+      type: String,
+    },
+    mfsnusername:{
+      type:String
+    },
+    mfsnpassword:{
+      type:String
+    },
+    state: {
       type: Number,
       default: 0,
     },
@@ -44,19 +83,7 @@ var productSchema = new mongoose.Schema(
         url: String,
       },
     ],
-    color: [],
-    tags: String,
-    ratings: [
-      {
-        star: Number,
-        comment: String,
-        postedby: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-      },
-    ],
-    totalrating: {
-      type: String,
-      default: 0,
-    },
+   
   },
   { timestamps: true }
 );

@@ -6,8 +6,8 @@ const validateMongoDbId = require("../utils/validateMongodbId");
 
 const createProduct = asyncHandler(async (req, res) => {
   try {
-    if (req.body.title) {
-      req.body.slug = slugify(req.body.title);
+    if (req.body.fname) {
+      req.body.slug = slugify(req.body.fname);
     }
     const newProduct = await Product.create(req.body);
     res.json(newProduct);
@@ -20,8 +20,8 @@ const updateProduct = asyncHandler(async (req, res) => {
   const id = req.params;
   validateMongoDbId(id);
   try {
-    if (req.body.title) {
-      req.body.slug = slugify(req.body.title);
+    if (req.body.fname) {
+      req.body.slug = slugify(req.body.fname);
     }
     const updateProduct = await Product.findOneAndUpdate({ id }, req.body, {
       new: true,
