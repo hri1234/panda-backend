@@ -75,6 +75,9 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
       ccard: findUser?.ccard,
       cvv : findUser?.cvv,
       expirydate: findUser?.expirydate,
+      manualcreditreport: findUser?.manualcreditreport,
+      mfsnusername : findUser?.mfsnusername,
+      mfsnpassword: findUser?.mfsnpassword,
       token: generateToken(findUser?._id),
     });
   } else {
@@ -120,14 +123,15 @@ const loginAdmin = asyncHandler(async (req, res) => {
       ccard: findAdmin?.ccard,
       cvv : findAdmin?.cvv,
       expirydate: findAdmin?.expirydate,
+      manualcreditreport: findAdmin?.manualcreditreport,
+      mfsnusername : findAdmin?.mfsnusername,
+      mfsnpassword: findAdmin?.mfsnpassword,
       token: generateToken(findAdmin?._id),
     });
   } else {
     throw new Error("Invalid Credentials");
   }
 });
-
-// handle refresh token
 
 const handleRefreshToken = asyncHandler(async (req, res) => {
   const cookie = req.cookies;
@@ -194,7 +198,9 @@ const updatedUser = asyncHandler(async (req, res) => {
         ccard:req?.body?.ccard,
         cvv : req?.body?.cvv,
         expirydate: req?.body?.expirydate,
-
+        manualcreditreport: req?.body?.manualcreditreport,
+        mfsnusername : req?.body?.mfsnusername,
+        mfsnpassword: req?.body?.mfsnpassword,
       },
       {
         new: true,
