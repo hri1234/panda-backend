@@ -60,6 +60,14 @@ var userSchema = new mongoose.Schema(
       type: String,
       // required: true,
     },
+    confirmPassword: {
+      type: String,
+      // required: true,
+    },
+    image: {
+      type: String,
+      // required: true,
+    },
     role: {
       type: String,
       default: "user",
@@ -74,6 +82,15 @@ var userSchema = new mongoose.Schema(
     },
     address: {
       type: String,
+    },
+    manualcreditreport: {
+      type: String,
+    },
+    mfsnusername:{
+      type:String
+    },
+    mfsnpassword:{
+      type:String
     },
     wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
     refreshToken: {
@@ -109,5 +126,29 @@ userSchema.methods.createPasswordResetToken = async function () {
   return resettoken;
 };
 
+
 //Export the model
 module.exports = mongoose.model("User", userSchema);
+
+
+  // firstname:jon
+  // fax:1
+  // website:www.web.com
+  // timezone:india
+  // bname:bala
+  // blname:?
+  // baddress:indore
+  // bcity:indore
+  // bstate:MP
+  // bzip:?
+  // ccard:master
+  // cvv:123
+  // expirydate:23
+  // email:test@gmail.com
+  // mobile:7566985221
+  // password:user
+  // address:indore
+  // manualcreditreport:grt
+  // mfsnusername:user
+  // mfsnpassword:123
+

@@ -1,4 +1,9 @@
 const express = require("express");
+const multer = require('multer'); // For handling file uploads
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+const uploadCloudinaryimg = require('../middlewares/singleImgUpload')
+
 const {
   createUser,
   loginUserCtrl,
@@ -27,7 +32,7 @@ const {
 } = require("../controller/userCtrl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 const router = express.Router();
-router.post("/register", createUser);
+router.post("/register",upload.single('image'),uploadCloudinaryimg, createUser);
 router.post("/forgot-password-token", forgotPasswordToken);
 
 router.put("/reset-password/:token", resetPassword);

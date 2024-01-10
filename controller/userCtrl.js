@@ -18,7 +18,7 @@ const sendEmail = require("./emailCtrl");
 const createUser = asyncHandler(async (req, res) => {
   /**
    * TODO:Get the email from req.body
-   */
+   */const img= req.uploadedImageUrl 
   const email = req.body.email;
   /**
    * TODO:With the help of email find the user exists or not
@@ -29,7 +29,16 @@ const createUser = asyncHandler(async (req, res) => {
     /**
      * TODO:if user not found user create a new user
      */
-    const newUser = await User.create(req.body);
+    if(req.body.password!==req.body.confirmPassword)
+    {
+      res.json("Password do not match")
+    }
+    const newUser = await User.create(
+      {
+        image:img,
+        ...req.body
+      }
+    );
     res.json(newUser);
   } else {
     /**
@@ -71,10 +80,16 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
       baddress : findUser?.baddress,
       bcity : findUser?.bcity,
       bstate: findUser?.bstate,
+      password: findUser?.password,
+      confirmPassword: findUser?.confirmPassword,
+      image: findUser?.image,
       bzip: findUser?.bzip,
       ccard: findUser?.ccard,
       cvv : findUser?.cvv,
       expirydate: findUser?.expirydate,
+      manualcreditreport: findUser?.manualcreditreport,
+      mfsnusername : findUser?.mfsnusername,
+      mfsnpassword: findUser?.mfsnpassword,
       token: generateToken(findUser?._id),
     });
   } else {
@@ -116,18 +131,22 @@ const loginAdmin = asyncHandler(async (req, res) => {
       baddress : findAdmin?.baddress,
       bcity : findAdmin?.bcity,
       bstate: findAdmin?.bstate,
+      password: findAdmin?.password,
+      confirmPassword: findAdmin?.confirmPassword,
+      image: findAdmin?.image,
       bzip: findAdmin?.bzip,
       ccard: findAdmin?.ccard,
       cvv : findAdmin?.cvv,
       expirydate: findAdmin?.expirydate,
+      manualcreditreport: findAdmin?.manualcreditreport,
+      mfsnusername : findAdmin?.mfsnusername,
+      mfsnpassword: findAdmin?.mfsnpassword,
       token: generateToken(findAdmin?._id),
     });
   } else {
     throw new Error("Invalid Credentials");
   }
 });
-
-// handle refresh token
 
 const handleRefreshToken = asyncHandler(async (req, res) => {
   const cookie = req.cookies;
@@ -191,10 +210,15 @@ const updatedUser = asyncHandler(async (req, res) => {
         bcity : req?.body?.bcity,
         bstate: req?.body?.bstate,
         bzip: req?.body?.bzip,
+        password: req?.body?.password,
+        confirmPassword: req?.body?.confirmPassword,
+        image: req?.body?.image,
         ccard:req?.body?.ccard,
         cvv : req?.body?.cvv,
         expirydate: req?.body?.expirydate,
-
+        manualcreditreport: req?.body?.manualcreditreport,
+        mfsnusername : req?.body?.mfsnusername,
+        mfsnpassword: req?.body?.mfsnpassword,
       },
       {
         new: true,
