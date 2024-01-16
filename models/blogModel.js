@@ -3,21 +3,62 @@ const mongoose = require("mongoose"); // Erase if already required
 // Declare the Schema of the Mongo model
 var blogSchema = new mongoose.Schema(
   {
-    title: {
+    sclient: {
       type: String,
-      required: true,
+      
     },
-    description: {
+    screport: {
       type: String,
-      required: true,
+      
     },
-    category: {
+    utdestination: {
       type: String,
-      required: true,
+      
     },
-    numViews: {
-      type: Number,
-      default: 0,
+    noinquiries: {
+      type: String,
+      
+    },
+    noaccount: {
+      type: String,
+      
+    },
+    excludeall: {
+      type: String,
+      
+    },
+    hideposition: {
+      type: String,
+      
+    },
+    documentoption: {
+      type: String,
+      
+    },
+    documentdestination: {
+      type: String,
+      
+    },
+    inquirydecis: {
+      type: String,
+      
+    },
+    Stringofinquiries: {
+      type: String,
+      
+    },
+    decision: {
+      type: String,
+      
+    },
+    typesofreportissues:{
+      type:String
+    },
+    decision1:{
+      type:String
+    },
+    decision2:{
+      type:String
     },
     isLiked: {
       type: Boolean,
@@ -40,7 +81,7 @@ var blogSchema = new mongoose.Schema(
       },
     ],
 
-    author: {
+    addimage: {
       type: String,
       default: "Admin",
     },
