@@ -13,7 +13,7 @@ var blogSchema = new mongoose.Schema(
     },
     worktoexecute:{
       type: String,
-    }
+    },
     utdestination: {
       type: String,
       
