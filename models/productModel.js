@@ -75,7 +75,7 @@ var productSchema = new mongoose.Schema(
     },
     state: {
       type: Number,
-      default: 0,
+   
     },
     images: [
       {
