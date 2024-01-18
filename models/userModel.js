@@ -16,7 +16,7 @@ var userSchema = new mongoose.Schema(
       type:String,
     },
     createdAt:{
-      type:"String"
+      type: String
     },
     timezone:{
       type : String ,
