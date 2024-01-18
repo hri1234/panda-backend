@@ -91,6 +91,7 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
       mfsnusername : findUser?.mfsnusername,
       mfsnpassword: findUser?.mfsnpassword,
       token: generateToken(findUser?._id),
+      createdAt : new Date(),
     });
   } else {
     throw new Error("Invalid Credentials");
@@ -142,6 +143,7 @@ const loginAdmin = asyncHandler(async (req, res) => {
       mfsnusername : findAdmin?.mfsnusername,
       mfsnpassword: findAdmin?.mfsnpassword,
       token: generateToken(findAdmin?._id),
+       createdAt : new Date(),
     });
   } else {
     throw new Error("Invalid Credentials");
