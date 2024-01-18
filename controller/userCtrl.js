@@ -39,7 +39,7 @@ const createUser = asyncHandler(async (req, res) => {
         ...req.body
       }
     );
-    res.json(newUser);
+res.status(200).json(newUser);
   } else {
     /**
      * TODO:if user found then thow an error: User already exists
