@@ -73,8 +73,10 @@ var productSchema = new mongoose.Schema(
       type:String
     },
     state: {
-      type: Number,
-      default: 0,
+      type: String,
+    },
+    freescore:{
+      type:String,
     },
     images:{
       type:String
